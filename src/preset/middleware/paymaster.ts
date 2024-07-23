@@ -14,11 +14,16 @@ export const neroPaymaster =
   (context?: any): UserOperationMiddlewareFn =>
   async (ctx) => {
     console.log('call neroPaymaster: ', ctx.paymasterOptions)
-    if (ctx.paymasterOptions['type'] == 'none' || !ctx.paymasterOptions['apikey']) {
+    if (!ctx.paymasterOptions['apikey']) {
+      console.log('neropaymaster  no apikey set')
+      return
+    }
+    if (ctx.paymasterOptions['type'] != 'erc20' && ctx.paymasterOptions['type'] != 'free') {
+      console.log('neropaymaster unsupported type: ', ctx.paymasterOptions['type'])
       return
     }
     if (ctx.paymasterOptions['type'] == 'erc20' && !ctx.paymasterOptions['token']) {
-      console.log('no erc20 token set')
+      console.log('neropaymaster no erc20 token set')
       return
     }
 
