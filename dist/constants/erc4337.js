@@ -6,6 +6,6 @@ exports.ERC4337 = {
     SimpleAccount: {
         Factory: "0x5B8D0D3089CbDf31D5e5E95EF3918A997E775aB1",
     },
-    PaymasterRPC: "http://10.112.0.106:43371",
-    BundlerRPC: "http://10.112.0.106:4337/rpc",
+    PaymasterRPC: "https://aa-demo.newhuoapps.com/api/paymaster",
+    BundlerRPC: "https://aa-demo.newhuoapps.com/api/bundler",
 };

@@ -28,9 +28,9 @@ export const neroPaymaster =
     }
 
     const rpc = ctx.paymasterOptions['rpc'] ?? ERC4337.PaymasterRPC
-    ctx.op.verificationGasLimit = ethers.BigNumber.from(
-      ctx.op.verificationGasLimit
-    ).mul(3);
+    // ctx.op.verificationGasLimit = ethers.BigNumber.from(
+    //   ctx.op.verificationGasLimit
+    // ).mul(3);
 
     const provider = new ethers.providers.JsonRpcProvider(rpc);
     const pm = (await provider.send("pm_sponsor_userop", [

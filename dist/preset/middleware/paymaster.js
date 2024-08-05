@@ -16,15 +16,22 @@ const constants_1 = require("../../constants");
 const neroPaymaster = (context) => (ctx) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     console.log('call neroPaymaster: ', ctx.paymasterOptions);
-    if (ctx.paymasterOptions['type'] == 'none' || !ctx.paymasterOptions['apikey']) {
+    if (!ctx.paymasterOptions['apikey']) {
+        console.log('neropaymaster  no apikey set');
+        return;
+    }
+    if (ctx.paymasterOptions['type'] != 'erc20' && ctx.paymasterOptions['type'] != 'free') {
+        console.log('neropaymaster unsupported type: ', ctx.paymasterOptions['type']);
         return;
     }
     if (ctx.paymasterOptions['type'] == 'erc20' && !ctx.paymasterOptions['token']) {
-        console.log('no erc20 token set');
+        console.log('neropaymaster no erc20 token set');
         return;
     }
     const rpc = (_a = ctx.paymasterOptions['rpc']) !== null && _a !== void 0 ? _a : constants_1.ERC4337.PaymasterRPC;
-    ctx.op.verificationGasLimit = ethers_1.ethers.BigNumber.from(ctx.op.verificationGasLimit).mul(3);
+    // ctx.op.verificationGasLimit = ethers.BigNumber.from(
+    //   ctx.op.verificationGasLimit
+    // ).mul(3);
     const provider = new ethers_1.ethers.providers.JsonRpcProvider(rpc);
     const pm = (yield provider.send("pm_sponsor_userop", [
         (0, utils_1.OpToJSON)(ctx.op),
