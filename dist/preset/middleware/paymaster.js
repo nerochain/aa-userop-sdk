@@ -20,11 +20,15 @@ const neroPaymaster = (context) => (ctx) => __awaiter(void 0, void 0, void 0, fu
         console.log('neropaymaster  no apikey set');
         return;
     }
-    if (ctx.paymasterOptions['type'] != 'erc20' && ctx.paymasterOptions['type'] != 'free') {
+    if (ctx.paymasterOptions['type'] == 'none') {
+        return;
+    }
+    const mode = parseInt(ctx.paymasterOptions['type']);
+    if (mode < 0 || mode > 2) {
         console.log('neropaymaster unsupported type: ', ctx.paymasterOptions['type']);
         return;
     }
-    if (ctx.paymasterOptions['type'] == 'erc20' && !ctx.paymasterOptions['token']) {
+    if (mode > 0 && !ctx.paymasterOptions['token']) {
         console.log('neropaymaster no erc20 token set');
         return;
     }
@@ -38,8 +42,8 @@ const neroPaymaster = (context) => (ctx) => __awaiter(void 0, void 0, void 0, fu
         ctx.paymasterOptions['apikey'],
         ctx.entryPoint,
         {
-            type: (context === null || context === void 0 ? void 0 : context.type) || ctx.paymasterOptions['type'],
-            token: (context === null || context === void 0 ? void 0 : context.token) || ctx.paymasterOptions['token']
+            type: '' + (ctx.paymasterOptions['type'] || (context === null || context === void 0 ? void 0 : context.type)),
+            token: ctx.paymasterOptions['token'] || (context === null || context === void 0 ? void 0 : context.token)
         }
     ]));
     ctx.op.paymasterAndData = pm.paymasterAndData;

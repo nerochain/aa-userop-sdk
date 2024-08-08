@@ -18,11 +18,15 @@ export const neroPaymaster =
       console.log('neropaymaster  no apikey set')
       return
     }
-    if (ctx.paymasterOptions['type'] != 'erc20' && ctx.paymasterOptions['type'] != 'free') {
+    if (ctx.paymasterOptions['type'] == 'none') {
+      return
+    }
+    const mode = parseInt(ctx.paymasterOptions['type'])
+    if (mode < 0 || mode > 2) {
       console.log('neropaymaster unsupported type: ', ctx.paymasterOptions['type'])
       return
     }
-    if (ctx.paymasterOptions['type'] == 'erc20' && !ctx.paymasterOptions['token']) {
+    if (mode > 0 && !ctx.paymasterOptions['token']) {
       console.log('neropaymaster no erc20 token set')
       return
     }
@@ -38,8 +42,8 @@ export const neroPaymaster =
       ctx.paymasterOptions['apikey'],
       ctx.entryPoint,
       {
-        type: context?.type || ctx.paymasterOptions['type'],
-        token: context?.token || ctx.paymasterOptions['token']
+        type: '' + (ctx.paymasterOptions['type'] || context?.type),
+        token: ctx.paymasterOptions['token'] || context?.token
       }
     ])) as NeroPaymasterResult;
 
