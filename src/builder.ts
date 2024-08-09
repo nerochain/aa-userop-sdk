@@ -6,6 +6,7 @@ import {
   StateOverrideSet,
   UserOperationMiddlewareFn,
 } from "./types";
+import { ERC4337 } from "./constants";
 
 export const DEFAULT_VERIFICATION_GAS_LIMIT = ethers.BigNumber.from(70000);
 export const DEFAULT_CALL_GAS_LIMIT = ethers.BigNumber.from(35000);
@@ -29,7 +30,7 @@ export class UserOperationBuilder {
   private defaultOp: IUserOperation;
   private currOp: IUserOperation;
   private middlewareStack: Array<UserOperationMiddlewareFn>;
-  public paymasterOptions: any = {apikey: '', type: 'none', token: ''}
+  public paymasterOptions: any = {rpc: ERC4337.PaymasterRPC, apikey: '', type: 'none', token: ''}
 
   constructor() {
     this.defaultOp = { ...DEFAULT_USER_OP };

@@ -13,6 +13,7 @@ exports.UserOperationBuilder = exports.DEFAULT_USER_OP = exports.DEFAULT_PRE_VER
 const ethers_1 = require("ethers");
 const utils_1 = require("./utils");
 const context_1 = require("./context");
+const constants_1 = require("./constants");
 exports.DEFAULT_VERIFICATION_GAS_LIMIT = ethers_1.ethers.BigNumber.from(70000);
 exports.DEFAULT_CALL_GAS_LIMIT = ethers_1.ethers.BigNumber.from(35000);
 exports.DEFAULT_PRE_VERIFICATION_GAS = ethers_1.ethers.BigNumber.from(21000);
@@ -31,7 +32,7 @@ exports.DEFAULT_USER_OP = {
 };
 class UserOperationBuilder {
     constructor() {
-        this.paymasterOptions = { apikey: '', type: 'none', token: '' };
+        this.paymasterOptions = { rpc: constants_1.ERC4337.PaymasterRPC, apikey: '', type: 'none', token: '' };
         this.defaultOp = Object.assign({}, exports.DEFAULT_USER_OP);
         this.currOp = Object.assign({}, this.defaultOp);
         this.middlewareStack = [];

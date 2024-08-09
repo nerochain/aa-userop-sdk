@@ -42,8 +42,8 @@ const neroPaymaster = (context) => (ctx) => __awaiter(void 0, void 0, void 0, fu
         ctx.paymasterOptions['apikey'],
         ctx.entryPoint,
         {
-            type: '' + (ctx.paymasterOptions['type'] || (context === null || context === void 0 ? void 0 : context.type)),
-            token: ctx.paymasterOptions['token'] || (context === null || context === void 0 ? void 0 : context.token)
+            type: '' + mode,
+            token: ctx.paymasterOptions['token']
         }
     ]));
     ctx.op.paymasterAndData = pm.paymasterAndData;

@@ -42,8 +42,8 @@ export const neroPaymaster =
       ctx.paymasterOptions['apikey'],
       ctx.entryPoint,
       {
-        type: '' + (ctx.paymasterOptions['type'] || context?.type),
-        token: ctx.paymasterOptions['token'] || context?.token
+        type: '' + mode,
+        token: ctx.paymasterOptions['token']
       }
     ])) as NeroPaymasterResult;
 
