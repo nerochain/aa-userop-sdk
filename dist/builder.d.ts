@@ -41,5 +41,6 @@ export declare class UserOperationBuilder {
     useMiddleware(fn: UserOperationMiddlewareFn): this;
     resetMiddleware(): this;
     buildOp(entryPoint: string, chainId: BigNumberish, stateOverrides?: StateOverrideSet): Promise<IUserOperation>;
+    fillOp(entryPoint: string, chainId: BigNumberish, stateOverrides?: StateOverrideSet): Promise<IUserOperation>;
     resetOp(): this;
 }

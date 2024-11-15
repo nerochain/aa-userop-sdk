@@ -50,7 +50,7 @@ export class Client {
   }
 
   async getSupportedTokens(builder: UserOperationBuilder) {
-    const userop = await builder.buildOp(this.entryPoint.address, this.chainId);
+    const userop = await builder.fillOp(this.entryPoint.address, this.chainId);
     const provider = new ethers.providers.JsonRpcProvider(builder.paymasterOptions['rpc'] ?? ERC4337.PaymasterRPC);
     const pm = (await provider.send("pm_supported_tokens", [
       userop,

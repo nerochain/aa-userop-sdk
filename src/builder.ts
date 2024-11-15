@@ -224,6 +224,17 @@ export class UserOperationBuilder {
     return OpToJSON(this.currOp);
   }
 
+  async fillOp(
+    entryPoint: string,
+    chainId: BigNumberish,
+    stateOverrides?: StateOverrideSet
+  ) {
+    this.setPaymasterOptions({simulatedOnly: true})
+    const op = await this.buildOp(entryPoint, chainId, stateOverrides)
+    this.setPaymasterOptions({simulatedOnly: false})
+    return op
+  }
+
   resetOp() {
     this.currOp = { ...this.defaultOp };
     return this;

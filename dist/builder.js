@@ -189,6 +189,14 @@ class UserOperationBuilder {
             return (0, utils_1.OpToJSON)(this.currOp);
         });
     }
+    fillOp(entryPoint, chainId, stateOverrides) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.setPaymasterOptions({ simulatedOnly: true });
+            const op = yield this.buildOp(entryPoint, chainId, stateOverrides);
+            this.setPaymasterOptions({ simulatedOnly: false });
+            return op;
+        });
+    }
     resetOp() {
         this.currOp = Object.assign({}, this.defaultOp);
         return this;

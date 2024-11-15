@@ -15,7 +15,11 @@ export const EOASignature =
 export const signUserOpHash =
   (signer: ISigner): UserOperationMiddlewareFn =>
   async (ctx) => {
-    ctx.op.signature = await signer.signMessage(
-      ethers.utils.arrayify(ctx.getUserOpHash())
-    );
+    if (ctx.paymasterOptions['simulatedOnly']) {
+      ctx.op.signature = '0xfffffffffffffffffffffffffffffff0000000000000000000000000000000007aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1c'
+    } else {
+      ctx.op.signature = await signer.signMessage(
+        ethers.utils.arrayify(ctx.getUserOpHash())
+      );
+    }
   };

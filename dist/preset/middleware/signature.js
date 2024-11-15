@@ -17,6 +17,11 @@ const EOASignature = (signer) => (ctx) => __awaiter(void 0, void 0, void 0, func
 });
 exports.EOASignature = EOASignature;
 const signUserOpHash = (signer) => (ctx) => __awaiter(void 0, void 0, void 0, function* () {
-    ctx.op.signature = yield signer.signMessage(ethers_1.ethers.utils.arrayify(ctx.getUserOpHash()));
+    if (ctx.paymasterOptions['simulatedOnly']) {
+        ctx.op.signature = '0xfffffffffffffffffffffffffffffff0000000000000000000000000000000007aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1c';
+    }
+    else {
+        ctx.op.signature = yield signer.signMessage(ethers_1.ethers.utils.arrayify(ctx.getUserOpHash()));
+    }
 });
 exports.signUserOpHash = signUserOpHash;

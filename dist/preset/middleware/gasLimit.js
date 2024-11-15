@@ -13,7 +13,7 @@ exports.estimateUserOperationGas = void 0;
 const utils_1 = require("../../utils");
 const estimateUserOperationGas = (provider) => (ctx) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
-    if (ctx.paymasterOptions['type'] != 'none') {
+    if (ctx.paymasterOptions['type'] != 'none' || ctx.paymasterOptions['simulatedOnly']) {
         return;
     }
     const params = ctx.stateOverrides !== undefined
