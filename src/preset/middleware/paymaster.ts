@@ -11,6 +11,7 @@ interface NeroPaymasterResult {
 }
 
 export const neroPaymaster =
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (context?: any): UserOperationMiddlewareFn =>
   async (ctx) => {
     console.log('call neroPaymaster: ', ctx.paymasterOptions)
