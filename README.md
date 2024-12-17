@@ -1,14 +1,12 @@
-![](https://i.imgur.com/mR5CsOr.png)
+![](./header.jpg)
 
 # Getting started
 
 A simple JS library for building ERC-4337 UserOperations.
 
-> **🚀 Looking for access to hosted infrastructure to build your Smart Accounts? Check out [stackup.sh](https://www.stackup.sh/)!**
-
 # Usage
 
-See the `userop` documentation at [docs.stackup.sh](https://docs.stackup.sh/docs/useropjs).
+See the `userop` documentation at [docs.nerochain.io](https://docs.nerochain.io/en/aa/userOpSdkUsage).
 
 # Contributing
 
@@ -32,8 +30,8 @@ yarn test
 
 # License
 
-Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
+Distributed under the MIT License.
 
 # Contact
 
-Feel free to direct any technical related questions to the `dev-hub` channel in the [Stackup Discord](https://discord.gg/VTjJGvMNyW).
+Feel free to direct any technical related questions to the `dev-hub` channel in the [Nero Discord](https://discord.gg/nerochainofficial).

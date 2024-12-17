@@ -1,12 +1,16 @@
 import { BigNumberish, ethers } from "ethers";
 import { UserOperationBuilder } from "./builder";
-import { ISendUserOperationOpts, IClientOpts, StateOverrideSet, UserOperationMiddlewareFn } from "./types";
+import { ISendUserOperationOpts, 
+  IClientOpts, 
+  StateOverrideSet, 
+  // UserOperationMiddlewareFn 
+} from "./types";
 import { EntryPoint, EntryPoint__factory } from "./typechain";
 import { OpToJSON } from "./utils";
 import { UserOperationMiddlewareCtx } from "./context";
 import { ERC4337 } from "./constants";
 import { BundlerJsonRpcProvider } from "./provider";
-import { estimateUserOperationGas } from "./preset/middleware";
+// import { estimateUserOperationGas } from "./preset/middleware";
 
 export class Client {
   private provider: ethers.providers.JsonRpcProvider;
