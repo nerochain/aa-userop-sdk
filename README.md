@@ -6,7 +6,7 @@ A simple JS library for building ERC-4337 UserOperations.
 
 # Usage
 
-See the `userop` documentation at [docs.nerochain.io](https://docs.nerochain.io/en/aaPlatform/userOpSdkUsage).
+See the `userop` documentation at [docs.nerochain.io](https://docs.nerochain.io/en/aa/userOpSdkUsage).
 
 # Contributing
 
