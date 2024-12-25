@@ -14,9 +14,7 @@ export const neroPaymaster =
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (context?: any): UserOperationMiddlewareFn =>
   async (ctx) => {
-    console.log('call neroPaymaster: ', ctx.paymasterOptions)
     if (!ctx.paymasterOptions['apikey']) {
-      console.log('neropaymaster  no apikey set')
       return
     }
     if (ctx.paymasterOptions['type'] == 'none') {
@@ -24,11 +22,9 @@ export const neroPaymaster =
     }
     const mode = parseInt(ctx.paymasterOptions['type'])
     if (mode < 0 || mode > 2) {
-      console.log('neropaymaster unsupported type: ', ctx.paymasterOptions['type'])
       return
     }
     if (mode > 0 && !ctx.paymasterOptions['token']) {
-      console.log('neropaymaster no erc20 token set')
       return
     }
 
