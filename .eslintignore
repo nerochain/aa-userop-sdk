@@ -9,3 +9,8 @@ LICENSE
 yarn.lock
 patches
 src/typechain
+.prettierignore
+*.jpg
+*.jpeg
+*.png
+*.gif

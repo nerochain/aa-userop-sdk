@@ -100,8 +100,8 @@ export class SimpleAccount extends UserOperationBuilder {
       })
       .useMiddleware(instance.resolveAccount)
       .useMiddleware(getGasPrice(instance.provider));
-    
-    base.useMiddleware(neroPaymaster())
+
+    base.useMiddleware(neroPaymaster());
     base.useMiddleware(estimateUserOperationGas(base.provider));
 
     return base.useMiddleware(signUserOpHash(base.signer));

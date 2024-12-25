@@ -14,8 +14,11 @@ interface GasEstimate {
 export const estimateUserOperationGas =
   (provider: ethers.providers.JsonRpcProvider): UserOperationMiddlewareFn =>
   async (ctx) => {
-    if (ctx.paymasterOptions['type'] != 'none' || ctx.paymasterOptions['simulatedOnly']) {
-      return
+    if (
+      ctx.paymasterOptions["type"] != "none" ||
+      ctx.paymasterOptions["simulatedOnly"]
+    ) {
+      return;
     }
     const params =
       ctx.stateOverrides !== undefined
