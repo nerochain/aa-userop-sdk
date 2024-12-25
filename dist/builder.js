@@ -32,7 +32,12 @@ exports.DEFAULT_USER_OP = {
 };
 class UserOperationBuilder {
     constructor() {
-        this.paymasterOptions = { rpc: constants_1.ERC4337.PaymasterRPC, apikey: '', type: 'none', token: '' };
+        this.paymasterOptions = {
+            rpc: constants_1.ERC4337.PaymasterRPC,
+            apikey: "",
+            type: "none",
+            token: "",
+        };
         this.defaultOp = Object.assign({}, exports.DEFAULT_USER_OP);
         this.currOp = Object.assign({}, this.defaultOp);
         this.middlewareStack = [];
