@@ -16,6 +16,7 @@ const utils_1 = require("./utils");
 const context_1 = require("./context");
 const constants_1 = require("./constants");
 const provider_1 = require("./provider");
+// import { estimateUserOperationGas } from "./preset/middleware";
 class Client {
     constructor(rpcUrl, opts) {
         this.provider = new provider_1.BundlerJsonRpcProvider(rpcUrl).setBundlerRpc((opts === null || opts === void 0 ? void 0 : opts.overrideBundlerRpc) || constants_1.ERC4337.BundlerRPC);

@@ -13,11 +13,11 @@ exports.neroPaymaster = void 0;
 const ethers_1 = require("ethers");
 const utils_1 = require("../../utils");
 const constants_1 = require("../../constants");
-const neroPaymaster = (context) => (ctx) => __awaiter(void 0, void 0, void 0, function* () {
+const neroPaymaster = 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+(context) => (ctx) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
-    console.log('call neroPaymaster: ', ctx.paymasterOptions);
     if (!ctx.paymasterOptions['apikey']) {
-        console.log('neropaymaster  no apikey set');
         return;
     }
     if (ctx.paymasterOptions['type'] == 'none') {
@@ -25,11 +25,9 @@ const neroPaymaster = (context) => (ctx) => __awaiter(void 0, void 0, void 0, fu
     }
     const mode = parseInt(ctx.paymasterOptions['type']);
     if (mode < 0 || mode > 2) {
-        console.log('neropaymaster unsupported type: ', ctx.paymasterOptions['type']);
         return;
     }
     if (mode > 0 && !ctx.paymasterOptions['token']) {
-        console.log('neropaymaster no erc20 token set');
         return;
     }
     const rpc = (_a = ctx.paymasterOptions['rpc']) !== null && _a !== void 0 ? _a : constants_1.ERC4337.PaymasterRPC;
