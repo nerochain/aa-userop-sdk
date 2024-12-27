@@ -5,7 +5,7 @@
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "repository": "git@github.com:nerochain/aa-userop-sdk.git",
-  "author": "stackup-wallet",
+  "author": "NERO Chain",
   "license": "MIT",
   "engines": {
     "node": ">=14.0.0"

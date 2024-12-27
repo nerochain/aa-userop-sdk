@@ -30,7 +30,12 @@ export class UserOperationBuilder {
   private defaultOp: IUserOperation;
   private currOp: IUserOperation;
   private middlewareStack: Array<UserOperationMiddlewareFn>;
-  public paymasterOptions: any = {rpc: ERC4337.PaymasterRPC, apikey: '', type: 'none', token: ''}
+  public paymasterOptions: any = {
+    rpc: ERC4337.PaymasterRPC,
+    apikey: "",
+    type: "none",
+    token: "",
+  };
 
   constructor() {
     this.defaultOp = { ...DEFAULT_USER_OP };
@@ -38,8 +43,8 @@ export class UserOperationBuilder {
     this.middlewareStack = [];
   }
 
-  setPaymasterOptions(obj:any) {
-    this.paymasterOptions = {...this.paymasterOptions, ...obj}
+  setPaymasterOptions(obj: any) {
+    this.paymasterOptions = { ...this.paymasterOptions, ...obj };
   }
 
   private resolveFields(op: Partial<IUserOperation>): Partial<IUserOperation> {
@@ -229,10 +234,10 @@ export class UserOperationBuilder {
     chainId: BigNumberish,
     stateOverrides?: StateOverrideSet
   ) {
-    this.setPaymasterOptions({simulatedOnly: true})
-    const op = await this.buildOp(entryPoint, chainId, stateOverrides)
-    this.setPaymasterOptions({simulatedOnly: false})
-    return op
+    this.setPaymasterOptions({ simulatedOnly: true });
+    const op = await this.buildOp(entryPoint, chainId, stateOverrides);
+    this.setPaymasterOptions({ simulatedOnly: false });
+    return op;
   }
 
   resetOp() {

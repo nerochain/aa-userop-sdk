@@ -43,12 +43,12 @@ class Client {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const userop = yield builder.fillOp(this.entryPoint.address, this.chainId);
-            const provider = new ethers_1.ethers.providers.JsonRpcProvider((_a = builder.paymasterOptions['rpc']) !== null && _a !== void 0 ? _a : constants_1.ERC4337.PaymasterRPC);
-            const pm = (yield provider.send("pm_supported_tokens", [
+            const provider = new ethers_1.ethers.providers.JsonRpcProvider((_a = builder.paymasterOptions["rpc"]) !== null && _a !== void 0 ? _a : constants_1.ERC4337.PaymasterRPC);
+            const pm = yield provider.send("pm_supported_tokens", [
                 userop,
                 builder.paymasterOptions.apikey,
-                this.entryPoint.address
-            ]));
+                this.entryPoint.address,
+            ]);
             return pm;
         });
     }

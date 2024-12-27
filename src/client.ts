@@ -1,9 +1,10 @@
 import { BigNumberish, ethers } from "ethers";
 import { UserOperationBuilder } from "./builder";
-import { ISendUserOperationOpts, 
-  IClientOpts, 
-  StateOverrideSet, 
-  // UserOperationMiddlewareFn 
+import {
+  ISendUserOperationOpts,
+  IClientOpts,
+  StateOverrideSet,
+  // UserOperationMiddlewareFn
 } from "./types";
 import { EntryPoint, EntryPoint__factory } from "./typechain";
 import { OpToJSON } from "./utils";
@@ -55,19 +56,21 @@ export class Client {
 
   async getSupportedTokens(builder: UserOperationBuilder) {
     const userop = await builder.fillOp(this.entryPoint.address, this.chainId);
-    const provider = new ethers.providers.JsonRpcProvider(builder.paymasterOptions['rpc'] ?? ERC4337.PaymasterRPC);
-    const pm = (await provider.send("pm_supported_tokens", [
+    const provider = new ethers.providers.JsonRpcProvider(
+      builder.paymasterOptions["rpc"] ?? ERC4337.PaymasterRPC
+    );
+    const pm = await provider.send("pm_supported_tokens", [
       userop,
       builder.paymasterOptions.apikey,
-      this.entryPoint.address
-    ]))
-    return pm
+      this.entryPoint.address,
+    ]);
+    return pm;
   }
 
   async sendUserOperation(
     builder: UserOperationBuilder,
     opts?: ISendUserOperationOpts
-  ) {    
+  ) {
     const dryRun = Boolean(opts?.dryRun);
     const op = await this.buildUserOperation(builder, opts?.stateOverrides);
     opts?.onBuild?.(op);
