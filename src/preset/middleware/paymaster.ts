@@ -10,6 +10,7 @@ interface NeroPaymasterResult {
   callGasLimit: string;
 }
 
+// prettier-ignore
 export const neroPaymaster =
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (context?: any): UserOperationMiddlewareFn =>
